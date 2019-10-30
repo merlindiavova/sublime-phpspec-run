@@ -1,0 +1,90 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+# See https://github.com/sebastianbergmann/phpspec/blob/0b78eddd0519dd9bf7c35359287fa6b0adb17391/src/TextUI/ResultPrinter.php#L344
+name: PHPSpec Text UI Result
+scope: text.phpspec-result
+hidden: true
+contexts:
+  main:
+
+    - match: ^--$
+      scope: comment.text.phpspec-result
+
+    - include: scope:source.diff
+
+    - match: ^(?=(\.\.|\.(E|F|I|R|S|W)|(E|F|I|R|S|W)\.)|(\.|E|F|I|R|S|W)$)
+      push:
+        - match: ^(?=Time|OK|FAILURES|ERRORS|WARNINGS)
+          pop: true
+        - match: \.
+          scope: test.progress.success.phpspec-result
+        - match: E
+          scope: region.redish phpspecrun test.progress.error.phpspec-result
+        - match: F
+          scope: region.redish phpspecrun test.progress.failure.phpspec-result
+        - match: I
+          scope: region.orangish phpspecrun test.progress.incomplete.phpspec-result
+        - match: R
+          scope: region.orangish phpspecrun test.progress.risky.phpspec-result
+        - match: S
+          scope: region.orangish phpspecrun test.progress.skipped.phpspec-result
+        - match: W
+          scope: region.orangish phpspecrun test.progress.warning.phpspec-result
+
+    # Pretty Printer support
+    - match: ^\s*==>.{43}
+      push:
+        - match: $
+          pop: true
+
+        - match: ✓
+          scope: markup.inserted
+
+        - match: ✖
+          scope: markup.deleted
+
+        - match: ⚈
+          scope: markup.deleted
+
+        - match: ➦
+          scope: markup.changed
+
+        - match: ℹ
+          scope: markup.changed
+
+        - match: \bR\b
+          scope: markup.changed
+
+    - match: '^(?:\e\[[0-9;]+m)?No tests executed\!(?:\e\[[0-9;]+m)?$'
+      scope: region.orangish phpspecrun test.footer.none-executed.phpspec-result
+
+    - match: '^(?:\e\[[0-9;]+m)?OK \(\d+ test(?:s)?, \d+ assertion(?:s)?\)(?:\e\[[0-9;]+m)?$'
+      scope: region.greenish phpspecrun test.footer.ok.phpspec-result
+
+    - match: '^(?:\e\[[0-9;]+m)?OK, but incomplete, skipped, or risky tests\!(?:\e\[[0-9;]+m)?$'
+      scope: region.orangish phpspecrun test.footer.ok-but-incomplete-skipped-or-risky.phpspec-result
+
+    - match: '^(?:\e\[[0-9;]+m)?Tests\: \d+, Assertions\: \d+(?:, (?:Incomplete|Skipped|Risky)\: \d+)+\.(?:\e\[[0-9;]+m)?$'
+      scope: region.orangish phpspecrun test.footer.ok-but-incomplete-skipped-or-risky.phpspec-result
+
+    - match: '^(?:\e\[[0-9;]+m)?WARNINGS\!(?:\e\[[0-9;]+m\s*)?$'
+      scope: region.orangish phpspecrun test.footer.warn.phpspec-result
+      push:
+        - match: '^(?:\e\[[0-9;]+m)?Tests\: \d+, Assertions\: \d+(?:, (?:Errors|Failures|Warnings|Skipped|Incomplete|Risky)\: \d+)+\.(?:\e\[[0-9;]+m)?$'
+          scope: region.orangish phpspecrun test.footer.warn.phpspec-result
+          pop: true
+
+    - match: '^(?:\e\[[0-9;]+m)?FAILURES\!(?:\e\[[0-9;]+m\s*)?$'
+      scope: region.redish phpspecrun test.footer.fail.phpspec-result
+      push:
+        - match: '^(?:\e\[[0-9;]+m)?Tests\: \d+, Assertions\: \d+(?:, (?:Errors|Failures|Warnings|Skipped|Incomplete|Risky)\: \d+)+\.(?:\e\[[0-9;]+m)?$'
+          scope: region.redish phpspecrun test.footer.fail.phpspec-result
+          pop: true
+
+    - match: '^(?:\e\[[0-9;]+m)?ERRORS\!(?:\e\[[0-9;]+m\s*)?$'
+      scope: region.redish phpspecrun test.footer.error.phpspec-result
+      push:
+        - match: '^(?:\e\[[0-9;]+m)?Tests\: \d+, Assertions\: \d+(?:, (?:Errors|Failures|Warnings|Skipped|Incomplete|Risky)\: \d+)+\.(?:\e\[[0-9;]+m)?$'
+          scope: region.redish phpspecrun test.footer.error.phpspec-result
+          pop: true

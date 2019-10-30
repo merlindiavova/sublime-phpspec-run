@@ -1,0 +1,16 @@
+[
+    { "caption": "PHPSpec Run: Spec", "command": "phpspec_run_spec" },
+    { "caption": "PHPSpec Run: Rerun", "command": "phpspec_run_previous" },
+    { "caption": "PHPSpec Run: Here", "command": "phpspec_run_here" },
+    { "caption": "PHPSpec Run: Suite", "command": "phpspec_run_suite" },
+    { "caption": "PHPSpec Run: Directory", "command": "phpspec_run_directory" },
+    { "caption": "PHPSpec Run: Cancel ", "command": "phpspec_run_cancel" },
+    { "caption": "PHPSpec Run: Results", "command": "phpspec_run_results" },
+    { "caption": "PHPSpec Run: Toggle Option --stop-on-failure", "command": "phpspec_run_toggle_option", "args": { "option": "stop-on-failure" } },
+    { "caption": "PHPSpec Run: Toggle Option --no-code-generation", "command": "phpspec_run_toggle_option", "args": { "option": "no-code-generation" } },
+    { "caption": "PHPSpec Run: Toggle Option --no-rerun", "command": "phpspec_run_toggle_option", "args": { "option": "no-rerun" } },
+    { "caption": "PHPSpec Run: Toggle Option --fake", "command": "phpspec_run_toggle_option", "args": { "option": "fake" } },
+
+    { "caption": "Preferences: PHPSpec Settings – Default", "command": "open_file", "args": { "file": "${packages}/phpspec-run/Preferences.sublime-settings" } },
+    { "caption": "Preferences: PHPSpec Settings – User", "command": "open_file", "args": { "file": "${packages}/User/Preferences.sublime-settings" } }
+]

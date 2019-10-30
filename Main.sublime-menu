@@ -1,0 +1,82 @@
+[
+    {
+        "id": "tools",
+        "children": [
+            {
+                "caption": "PHPSpec...",
+                "mnemonic": "P",
+                "command": "show_overlay",
+                "args": {
+                    "overlay": "command_palette",
+                    "text": "PHPSpec Run: "
+                }
+            }
+        ]
+    },
+    {
+        "id": "preferences",
+        "children": [
+            {
+                "id": "package-settings",
+                "children": [
+                    {
+                        "caption": "PHPSpec",
+                        "children": [
+                            {
+                                "caption": "README",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/phpspec-run/README.md"
+                                }
+                            },
+                            {
+                                "caption": "CHANGELOG",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/phpspec-run/CHANGELOG.md"
+                                }
+                            },
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "Settings – Default",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/phpspec-run/Preferences.sublime-settings"
+                                }
+                            },
+                            {
+                                "caption": "Settings – User",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Preferences.sublime-settings"
+                                }
+                            },
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "Key Bindings – User",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/User/Default (${platform}).sublime-keymap"
+                                }
+                            },
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "LICENSE",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/phpspec-run/LICENSE"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
